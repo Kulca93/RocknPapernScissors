@@ -1,21 +1,21 @@
 class AI {
 
-  def aiPlay: Int ={
-
-    val aiRandom = new scala.util.Random
-
-    aiRandom.nextInt(3)
+  def aiRPS: String ={
 
 
+    var aiInput : String = " "
+    val aiRandom = scala.util.Random.nextInt(2)
 
+    aiRandom match{
+
+      case 0 => aiInput = "Rock"
+      case 1 => aiInput = "Paper"
+      case 2 => aiInput = "Scissors"
+
+    }
+      aiInput
+    }
   }
 
-  def aiString: String ={
-
-    val ai.aiPlay
-  }
 
 
-
-
-}
