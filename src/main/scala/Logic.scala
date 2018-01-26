@@ -11,60 +11,70 @@ class Logic {
     var i: Int = 0
     var userScore: Int = 0
     var aiScore: Int = 0
+    val winningScore : Int = 3
+
 
 
     //Users name
     val userName = readLine("Enter your name")
     println(userName)
 
-    //Users choice
-
 
     //Game loop
-    for (x <- 0 to 2) {
+    while (userScore < winningScore && aiScore < winningScore) {
 
-      val userInput = readLine("Rock paper scissors...")
+      val userInput = readLine("Rock, paper, scissors...")
 
-      //Users input
+println(userInput)
+      //Match user input
+      val aiPick = ai.aiRPS
+
       userInput match {
 
-        case "rock" => i = 0
-        case "paper" => i = 1
-        case "scissors" => i = 2
-      }
-
-      //Match user input
-      i match {
-
         //User chooses rock
-        case 0 =>
+        case "rock" => {
 
-          if (ai.aiPlay == 0){}
-          else if (ai.aiPlay == 1){aiScore = aiScore + 1}
-          else { userScore = userScore + 1}
+          if (aiPick == "Rock") {aiScore == aiScore && userScore == userScore}
 
-        case 1 =>
-          if (ai.aiPlay == 1){}
-          else if(ai.aiPlay == 2) {aiScore = aiScore +1}
-          else {userScore = userScore + 1}
+          else if (aiPick == "Paper") {
+            aiScore += 1
+          }
 
-        case 2 =>
-          if (ai.aiPlay == 2){}
-          else if( ai.aiPlay == 0) {aiScore = aiScore + 1}
-          else {userScore = userScore}
+          else {
+            userScore += 1
+          }
+        }
+
+        case "paper" => {
+          if (aiPick == "Paper") {aiScore == aiScore && userScore == userScore}
+
+          else if (aiPick == "Scissors") {
+            aiScore += 1
+          }
+          else {
+            userScore += 1
+          }
+        }
+
+        case "scissors" => {
+          if (aiPick == "Scissors") {aiScore == aiScore && userScore == userScore}
+
+          else if (aiPick == "Rock") {
+            aiScore += 1
+          }
+          else {
+            userScore += 1
+          }
+        }
       }
-        println("AI has picked " + ai.aiRPS)
-         println(userName + " picked " + userInput)
-        println("Player score is " + userScore)
-      println("AI Score is " + aiScore)
-    }
+        println(userName + " picked " + userInput + " and the AI has picked " + aiPick )
+        println("Player score is " + userScore + " and the AI's score is " + aiScore)
 
-    if(userScore > aiScore){
-      println("YOU WIN!!!")
-    } else{
-      println("LOOOOOOOSAH! EHEHEHEH")
+      if(userScore == winningScore){
+        println("YOU WIN!!!")
+      } else if(aiScore == winningScore){
+        println("LOOOOOOOSAH! EHEHEHEH")
+      }
     }
-
   }
-
 }
